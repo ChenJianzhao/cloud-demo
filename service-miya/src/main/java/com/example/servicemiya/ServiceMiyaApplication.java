@@ -3,6 +3,8 @@ package com.example.servicemiya;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,8 @@ import java.util.logging.Logger;
 
 @SpringBootApplication
 @RestController
+@EnableHystrix
+@EnableCircuitBreaker
 public class ServiceMiyaApplication {
 
     public static void main(String[] args) {
@@ -31,7 +35,7 @@ public class ServiceMiyaApplication {
     @RequestMapping("/miya")
     public String info(){
         LOG.log(Level.INFO, "info is being called");
-        return restTemplate.getForObject("http://localhost:8988/info",String.class);
+        return restTemplate.getForObject("http://localhost:8988/zipkinhi",String.class);
     }
 
     @Autowired

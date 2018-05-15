@@ -28,14 +28,8 @@
         <dependency>
             <groupId>io.zipkin.java</groupId>
             <artifactId>zipkin-autoconfigure-ui</artifactId>
-            <version>2.2.1</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>io.zipkin.java</groupId>-->
-            <!--<artifactId>zipkin</artifactId>-->
-            <!--<version>2.2.1</version>-->
-        <!--</dependency>-->
 
     </dependencies>
 

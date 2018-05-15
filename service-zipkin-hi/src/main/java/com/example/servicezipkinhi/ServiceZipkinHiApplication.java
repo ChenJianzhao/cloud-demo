@@ -4,6 +4,8 @@ package com.example.servicezipkinhi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,8 @@ import java.util.logging.Logger;
 
 @SpringBootApplication
 @RestController
+@EnableHystrix
+@EnableCircuitBreaker
 public class ServiceZipkinHiApplication {
 
     public static void main(String[] args) {
@@ -36,7 +40,7 @@ public class ServiceZipkinHiApplication {
         LOG.log(Level.INFO, "calling trace service-hi  ");
         return restTemplate.getForObject("http://localhost:8989/miya", String.class);
     }
-    @RequestMapping("/info")
+    @RequestMapping("/zipkinhi")
     public String info(){
         LOG.log(Level.INFO, "calling trace service-hi ");
 
